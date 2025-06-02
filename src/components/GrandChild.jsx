@@ -17,7 +17,7 @@ const GrandChild = () => {
         <p>Count: {count}</p>
         <button onClick={() => dispatch({ type: INCREMENT})}
         >
-            increment
+            INCREMENT
         </button>
         
       </div>

@@ -2,6 +2,7 @@ import './App.css'
 import { useState } from 'react'
 import Child from './components/Child'
 import { useSelector, useDispatch } from 'react-redux'
+import { incrementCount, decrementCount } from './Store/reducer/actions/counter'
 
 const styles = {
   container: {
@@ -23,9 +24,15 @@ function App() {
       <h1>Parent</h1>
       <p>Count: {count}</p>
       <button
-        onClick={() => dispatch({ type: 'INCREMENT'})}
+        onClick={() => dispatch(incrementCount())}
       >
         INCREMENT
+      </button>
+
+      <button
+        onClick={() => dispatch(decrementCount())}
+      >
+        DECREMENT
       </button>
       <Child />
     </div>
