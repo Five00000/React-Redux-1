@@ -6,6 +6,7 @@ import { incrementCount,
 decrementCount,
 incrementCustomCount } from './Store/reducer/actions/counter'
 import User from './components/User'
+import Users from './components/users'
 
 const styles = {
   container: {
@@ -22,12 +23,17 @@ function App() {
   
   const dispatch = useDispatch()
 
+
+
+
+
+
   const [addNo, setAddNo] =  useState(0)
   
 
   return (
     <>
-      <div style={styles.container}>
+      {/* <div style={styles.container}>
         <h1>Parent</h1>
         <p>Count: {count}</p>
         <button
@@ -56,7 +62,8 @@ function App() {
 
         <Child />
       </div>
-      <User />
+      <User /> */}
+      <Users /> 
     </>
   )
 }
