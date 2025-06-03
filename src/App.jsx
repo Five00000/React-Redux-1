@@ -2,7 +2,10 @@ import './App.css'
 import { useState } from 'react'
 import Child from './components/Child'
 import { useSelector, useDispatch } from 'react-redux'
-import { incrementCount, decrementCount } from './Store/reducer/actions/counter'
+import { incrementCount,
+decrementCount,
+incrementCustomCount } from './Store/reducer/actions/counter'
+import User from './components/User'
 
 const styles = {
   container: {
@@ -15,27 +18,46 @@ const styles = {
 
 
 function App() {
-  const count = useSelector((state) => state.count)
+  const count = useSelector((state) => state.counter.count)
+  
   const dispatch = useDispatch()
+
+  const [addNo, setAddNo] =  useState(0)
   
 
   return (
-    <div style={styles.container}>
-      <h1>Parent</h1>
-      <p>Count: {count}</p>
-      <button
-        onClick={() => dispatch(incrementCount())}
-      >
-        INCREMENT
-      </button>
+    <>
+      <div style={styles.container}>
+        <h1>Parent</h1>
+        <p>Count: {count}</p>
+        <button
+          onClick={() => dispatch(incrementCount())}
+        >
+          INCREMENT
+        </button>
 
-      <button
-        onClick={() => dispatch(decrementCount())}
-      >
-        DECREMENT
-      </button>
-      <Child />
-    </div>
+        <button
+          onClick={() => dispatch(decrementCount())}
+        >
+          DECREMENT
+        </button>
+        <br />
+        <br />
+        <input type='number' 
+        placeholder='Enter the number to add'
+        value={addNo}
+        onInput={(e) => setAddNo(e.target.value)}
+        />
+        <button
+          onClick={() => dispatch(incrementCustomCount(addNo))}
+        >
+          Custom increment
+        </button>
+
+        <Child />
+      </div>
+      <User />
+    </>
   )
 }
 
